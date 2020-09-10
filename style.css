@@ -1,0 +1,64 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+button {
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: bold;
+    height: 40px;
+    width: 80px;
+}
+
+.board {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 0px;
+        height: 500px;
+        width: 500px;
+}    
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+   
+}
+.playerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.namesContainer {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.border-right {
+    border-right: 5px solid black;
+}
+.border-bottom {
+    border-bottom: 5px solid black;
+}
+.newGame {
+    margin-top: 20px;
+    width: 100px;
+}
+/* .board { */
+    /* display: grid; */
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* max-width: 600px; */
+    /* height: 600px; */
+    /* grid-gap: 10px; */
+    /* grid-auto-rows: minmax(100px, auto); */
+/* } */
