@@ -2,7 +2,7 @@
 const Player = (name, move) => {
     const getName = () => name;
     const getMove = () => move;
-    const isWinner = () => `${name} is the Winner`
+    const isWinner = () => alert(`${name} is the Winner`)
     const newName = (newName) => name = newName;
 
     return {getName, getMove, isWinner, newName};
@@ -19,15 +19,41 @@ let gameBoard = (() => {
         '','','',
         '','',''
     ];
+    let winCombo = [
+        [0,1,2], 
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6],
+    ];
     
+    
+    const checkWin = () => {
+        for(let i = 0; i < winCombo.length; i++) {
+            let check = [];
+            for(let j = 0; j < 3; j++) {  
+                if(board[winCombo[i][j]] === "X") { 
+                    check.push(winCombo[i][j])
+                } else {
+                    check.push(false);
+                    break
+                }
+            }
+            if(!check.includes(false)) {
+                return player1.isWinner();
+            }
+        }
+    }
+
     const render = () => {
         board.forEach(function (val, index) {
-            squares[index].textContent = val
+            squares[index].textContent = val;
         })
-        console.log(board);
-    }
-    const checkWinner = () => {
 
+        
     }
     const occupiedCell = (i) => {
         return board[i] != '';
@@ -43,9 +69,10 @@ let gameBoard = (() => {
         board[idx] = turn;
         turn = turn === player1.getMove() ? player2.getMove() : player1.getMove();
         render();
+        checkWin();
     }
     document.getElementById("board").addEventListener('click', handleTurn);
-    
+    return{checkWin}
 })()
 
 let displayController = (() => {
